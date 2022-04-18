@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.end.endclothing.api.CloudApiHelper
 import com.end.endclothing.repository.ENDClothingMainRepository
-import com.end.endclothing.viewmodel.ENDClothingViewModel
+import com.end.endclothing.ui.viewmodel.ENDClothingViewModel
 
 /**
  * Created by GandeepanS on 18/04/2022.

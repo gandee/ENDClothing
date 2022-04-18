@@ -10,5 +10,5 @@ interface CloudApiService {
     @GET("android_test_example.json")
     suspend fun getBothHoodyAndSneakersProducts(): ProductsJSONObject
     @GET("example.json")
-    suspend fun getUsers1(): ProductsJSONObject
+    suspend fun getSneakers(): ProductsJSONObject
 }
