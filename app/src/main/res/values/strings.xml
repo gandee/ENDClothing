@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ENDClothing</string>
+    <string name="fetching_end_products">Fetch END. Products</string>
+    <string name="product_image">TODO</string>
 </resources>
