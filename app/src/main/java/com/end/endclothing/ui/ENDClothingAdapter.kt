@@ -1,9 +1,13 @@
 package com.end.endclothing.ui
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.end.endclothing.R
 import com.end.endclothing.model.Products
+import kotlinx.android.synthetic.main.recycleview_item_layout.view.*
 
 
 /**
@@ -11,7 +15,13 @@ import com.end.endclothing.model.Products
  */
 class ENDClothingAdapter( private val products: ArrayList<Products>) : RecyclerView.Adapter<ENDClothingAdapter.DataViewHolder>() {
     class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
+        fun bind(products: Products) {
+            itemView.textViewProductTitle.text = products.name
+            itemView.textViewProductPrice.text = products.price
+            Glide.with(itemView.imageViewProduct.context)
+                .load(products.image)
+                .into(itemView.imageViewProduct)
+        }
     }
 
     /**
@@ -38,7 +48,12 @@ class ENDClothingAdapter( private val products: ArrayList<Products>) : RecyclerV
      * @see .onBindViewHolder
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataViewHolder {
-        TODO("Not yet implemented")
+       return  DataViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.recycleview_item_layout, parent,
+                false
+            )
+        )
     }
 
     /**
@@ -63,7 +78,7 @@ class ENDClothingAdapter( private val products: ArrayList<Products>) : RecyclerV
      * @param position The position of the item within the adapter's data set.
      */
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.bind(products[position])
     }
 
     /**
@@ -72,6 +87,10 @@ class ENDClothingAdapter( private val products: ArrayList<Products>) : RecyclerV
      * @return The total number of items in this adapter.
      */
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return products.size
+    }
+
+    fun addProducts(productList: List<Products>) {
+        products.addAll(productList)
     }
 }

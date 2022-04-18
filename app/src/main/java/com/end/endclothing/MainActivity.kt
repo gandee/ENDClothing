@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.end.endclothing.api.CloudApiHelperImpl
 import com.end.endclothing.api.RetrofitBuilder
+import com.end.endclothing.model.Products
 import kotlinx.android.synthetic.main.activity_main.*
 
 import com.end.endclothing.ui.ENDClothingAdapter
@@ -73,8 +74,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun displayProducts(user: Any) {
-
+    private fun displayProducts(products: List<Products>) {
+        recyclerView.visibility = View.VISIBLE
+        products.let { listOfProducts -> listOfProducts.let { adapter.addProducts(products) } }
+        adapter.notifyDataSetChanged()
     }
 
     private fun setupViewModel() {
